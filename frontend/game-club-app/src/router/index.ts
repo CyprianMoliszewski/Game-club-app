@@ -4,7 +4,13 @@ import AdminEditNewsletterView from '@/views/AdminEditNewsletterView.vue'
 import AdminEditNewsView from '@/views/AdminEditNewsView.vue'
 import AdminLoginView from '@/views/AdminLoginView.vue'
 import AdminPageView from '@/views/AdminPageView.vue'
-
+import MainPage from '@/views/MainPageView.vue'
+import AboutUs from '../views/AboutUsView.vue'
+import AdminLogin from '../views/AdminLoginView.vue'
+import AdminPage from '../views/AdminPageView.vue'
+import ConcreteNews from '@/views/ConcreteNewsView.vue'
+import Contact from '@/views/ContactView.vue'
+import GamesList from '@/views/GamesListView.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -39,12 +45,32 @@ const router = createRouter({
       name: 'AdminEditNewsletter',
       component: AdminEditNewsletterView,
       meta: { requiresAuth: true, allowedRoles: [] }
+    },
+    {
+      path: '/',
+      name: 'home',
+      component: MainPage
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: AboutUs
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact
+    },
+    {
+      path: '/games',
+      name: 'games',
+      component: GamesList
+    },
+    {
+      path: '/news/:id', 
+      name: 'news-detail',
+      component: ConcreteNews
     }
-
-
-
-
-
   ],
 })
 
