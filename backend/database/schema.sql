@@ -3,8 +3,7 @@ CREATE TABLE tbl_news (
     news_title TEXT NOT NULL,
     news_description TEXT NOT NULL,
     news_photo TEXT NOT NULL,
-    news_date DATETIME NOT NULL,
-    is_active BOOLEAN NOT NULL
+    news_date DATETIME NOT NULL
 );
 
 CREATE TABLE tbl_games (

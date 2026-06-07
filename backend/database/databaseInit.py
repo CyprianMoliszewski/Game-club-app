@@ -2,8 +2,8 @@ import sqlite3
 import os
 
 def databaseInit():
-    schemaPath = "schema.sql"
-    dbName = "database.db"
+    schemaPath = "database/schema.sql"
+    dbName = "database/database.db"
 
     if os.path.exists(dbName):
         print("Baza danych juz istnieje.")

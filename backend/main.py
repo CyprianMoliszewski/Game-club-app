@@ -1,9 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
-from endpoints import adminEndpoints
+from database.databaseInit import databaseInit
+from endpoints import adminEndpoints, newsEndpoints, gamesEndpoints, newsletterEndpoints
 
 app = FastAPI()
+databaseInit()
 
 #CORS MIDDLEWARE
 app.add_middleware(
@@ -13,13 +16,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
 app.include_router(adminEndpoints.router, prefix="/api/admin", tags=["admin"])
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World111"}
-
-@app.get("/api/test")
-def test_polaczenia():
-    return {"message": "test endpoint dziala"}
+app.include_router(newsEndpoints.router, tags=["news"])
+app.include_router(gamesEndpoints.router, tags=["games"])
+app.include_router(newsletterEndpoints.router, tags=["newsletter"])
