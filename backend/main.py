@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from endpoints import adminEndpoints
+
 app = FastAPI()
 
 #CORS MIDDLEWARE
@@ -11,6 +13,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(adminEndpoints.router, prefix="/api/admin", tags=["admin"])
 
 @app.get("/")
 async def root():
